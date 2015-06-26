@@ -22,7 +22,7 @@ public:
     Graphm *graph;
     node *nod;
     int *D;
-    void display(string a);
+    void display(string a,int k);
 
 private slots:
     void on_spinBox_valueChanged(int arg1);

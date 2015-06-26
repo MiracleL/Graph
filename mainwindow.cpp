@@ -50,6 +50,7 @@ void MainWindow::on_add_pushButton_clicked()
 
 void MainWindow::on_add_pushButton_2_clicked()
 {
+    QString a="sss";
     if(ui->city->text()!="")
     {
         if(cout<num)
@@ -134,7 +135,7 @@ void MainWindow::on_pushButton_4_clicked()
         for(int i=0; i<graph->n(); i++)
         {
             if(i!=val)                        //为了将自己到自己的路径剔除
-                display(b[i]);
+                display(b[i],i);
         }
 
         graph->MarkInit();
@@ -145,7 +146,7 @@ void MainWindow::on_pushButton_4_clicked()
 
 }
 
-void MainWindow::display(string a)
+void MainWindow::display(string a,int k)
 {
     QString ex="",val=" -> ";
     for(int j=0;j<a.size();j++)
@@ -157,6 +158,23 @@ void MainWindow::display(string a)
                 ex+=nod[i].str();
                 if(j<a.size() -1)
                     ex+=val;
+                if(j==a.size() - 1)
+                {
+                    if(D[k]!=INFINITY)
+                    {
+                        QString p="";
+                        QString x=QString::number(D[k]);
+                        p="  The shortest distance is "+x;
+                        ex+=p;
+                    }
+                    else
+                    {
+                        QString p="";
+                        p="  You can't get to there";
+                        ex+=p;
+                    }
+
+                }
                 break;
             }
         }
